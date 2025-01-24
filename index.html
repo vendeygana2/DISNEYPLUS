@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Disney</title>
+    <link rel="icon" href="https://d.techtimes.com/en/full/428195/maxhuge-discount-now-live-save-40-max-annual-subscriptions-now.png?w=1600&h=1600&q=88&f=556c64e5a75d17a2c4b90d6f76f83e5e" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .venta {
+            background-color: white;
+            border: 2px solid #ed7318;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+        }
+        .venta p {
+            margin: 15px 0;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .botones {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .boton {
+            background-color: #ed7318;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .boton:hover {
+            background-color: #d66616;
+        }
+        .imagen {
+            width: 100px;
+            height: auto;
+            margin: 20px auto;
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ed7318;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body onload="openModal()">
+    <div class="overlay" id="overlay">
+        <div class="venta">
+            <img class="imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2YXoZKi6l7P0Lm952zHtLWLvLdiZxrhyjuQ&s" alt="Logo Disney">
+            <div class="header-title">COMPRA TU PANTALLA VIP O CUENTA COMPLETA CON LA MEJOR PROGRAMACIÓN</div>
+            <p>MIRA TODO LO QUE TE OFRECE DESDE EL AÑO PASADO (2024)</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/MKf8d3t_WVk" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="botones">
+                <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/cuenta-721897441'">Comprar</button>
+                <button class="boton" onclick="window.location.href='https://www.vendeygana.net/user/'">Regresar a Vende y Gana</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('overlay').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
