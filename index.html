@@ -83,8 +83,8 @@
         }
     </style>
 </head>
-<body onload="openModal()">
-    <div class="overlay" id="overlay">
+<body>
+    <div class="overlay" id="overlay" style="display: none;">
         <div class="venta">
             <img class="imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2YXoZKi6l7P0Lm952zHtLWLvLdiZxrhyjuQ&s" alt="Logo Disney">
             <div class="header-title">COMPRA TU PANTALLA VIP O CUENTA COMPLETA CON LA MEJOR PROGRAMACIÓN</div>
@@ -103,6 +103,9 @@
         function openModal() {
             document.getElementById('overlay').style.display = 'flex';
         }
+
+        // Abre la ventana modal automáticamente al cargar la página
+        window.onload = openModal;
     </script>
 </body>
 </html>
