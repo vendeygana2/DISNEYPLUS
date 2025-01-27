@@ -30,9 +30,18 @@
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 600px;
+            max-width: 500px; /* Adjusted width */
             text-align: center;
             position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
         }
         .venta p {
             margin: 15px 0;
@@ -70,22 +79,77 @@
         .boton:hover {
             background-color: #d66616;
         }
+        .boton-comprar {
+            background-color: #2596be; /* Updated color */
+        }
         .imagen {
             width: 100px;
             height: auto;
             margin: 20px auto;
         }
         .header-title {
-            font-size: 24px;
+            font-size: 18px; /* Reduced font size */
             font-weight: bold;
             color: #ed7318;
             margin-bottom: 20px;
         }
+        .likes {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .likes button {
+            background-color: #ed7318;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .likes button:hover {
+            background-color: #d66616;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background-color: white;
+            border: 2px solid #ed7318;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .modal p {
+            margin: 0;
+        }
+        .modal button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #ed7318;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .modal button:hover {
+            background-color: #d66616;
+        }
+        .modal img {
+            margin-bottom: 15px;
+            width: 100px; /* Adjust the size as needed */
+        }
     </style>
 </head>
 <body>
-    <div class="overlay" id="overlay" style="display: none;">
+    <div class="overlay" id="overlay">
         <div class="venta">
+            <button class="close-btn" onclick="window.location.href='https://www.vendeygana.net/user/'">&times;</button>
             <img class="imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2YXoZKi6l7P0Lm952zHtLWLvLdiZxrhyjuQ&s" alt="Logo Disney">
             <div class="header-title">COMPRA TU PANTALLA VIP O CUENTA COMPLETA CON LA MEJOR PROGRAMACIÓN</div>
             <p>MIRA TODO LO QUE TE OFRECE DESDE EL AÑO PASADO (2024)</p>
@@ -93,19 +157,74 @@
                 <iframe src="https://www.youtube.com/embed/MKf8d3t_WVk" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="botones">
-                <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/cuenta-721897441'">Comprar</button>
+                <button class="boton boton-comprar" onclick="window.location.href='https://departamentodecuentas.company.site/products/cuenta-721897441'">Comprar</button>
                 <button class="boton" onclick="window.location.href='https://www.vendeygana.net/user/'">Regresar a Vende y Gana</button>
+            </div>
+            <div class="likes">
+                <span id="like-count">116</span> Likes
+                <button onclick="addLike()">Me Gusta</button>
             </div>
         </div>
     </div>
 
+    <div class="modal" id="modal">
+        <img src="https://i.pinimg.com/originals/6d/04/85/6d0485006e455ef83290b2a5bcf27c56.gif" alt="Gracias">
+        <p id="modal-message"></p>
+        <button onclick="closeModal()">Cerrar</button>
+    </div>
+
     <script>
-        function openModal() {
-            document.getElementById('overlay').style.display = 'flex';
+        // Abre la ventana modal automáticamente al cargar la página
+        document.getElementById('overlay').style.display = 'flex';
+
+        let likeCount = localStorage.getItem('likeCount') ? parseInt(localStorage.getItem('likeCount')) : 116;
+
+        function updateLikeCount() {
+            document.getElementById('like-count').textContent = likeCount;
+            localStorage.setItem('likeCount', likeCount);
         }
 
-        // Abre la ventana modal automáticamente al cargar la página
-        window.onload = openModal;
+        function showThanksMessage(message) {
+            const modal = document.getElementById('modal');
+            document.getElementById('modal-message').textContent = message;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function addLike() {
+            const lastLikeDate = localStorage.getItem('lastLikeDate');
+            const currentDate = new Date().toDateString();
+
+            if (lastLikeDate === currentDate) {
+                showThanksMessage("GRACIAS PERO SOLO PUEDES DARLE LIKE UNA VEZ AL DIA");
+            } else {
+                likeCount++;
+                updateLikeCount();
+                localStorage.setItem('lastLikeDate', currentDate);
+                showThanksMessage("GRACIAS POR TU LIKE, ES MUY IMPORTANTE PARA NOSOTROS, PUES TU ERES NUESTRA RAZÓN DE MEJORAR CADA DÍA");
+            }
+        }
+
+        // Sumar 17 likes automáticamente cada día
+        function addDailyLikes() {
+            likeCount += 17;
+            updateLikeCount();
+        }
+
+        // Verificar si ha pasado un día desde la última actualización
+        let lastUpdate = localStorage.getItem('lastUpdate');
+        const currentDate = new Date().toDateString();
+
+        if (lastUpdate !== currentDate) {
+            addDailyLikes();
+            localStorage.setItem('lastUpdate', currentDate);
+        }
+
+        // Inicializar el conteo de likes al cargar la página
+        updateLikeCount();
     </script>
 </body>
 </html>
