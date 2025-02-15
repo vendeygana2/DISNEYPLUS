@@ -3,228 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra Disney</title>
-    <link rel="icon" href="https://d.techtimes.com/en/full/428195/maxhuge-discount-now-live-save-40-max-annual-subscriptions-now.png?w=1600&h=1600&q=88&f=556c64e5a75d17a2c4b90d6f76f83e5e" type="image/png">
+    <title>Formulario</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .venta {
-            background-color: white;
-            border: 2px solid #ed7318;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 500px; /* Adjusted width */
-            text-align: center;
-            position: relative;
-        }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .venta p {
-            margin: 15px 0;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
             overflow: hidden;
-            max-width: 100%;
-            background: #000;
         }
-        .video-container iframe {
+        .iframe-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
         }
-        .botones {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .boton {
-            background-color: #ed7318;
-            color: white;
-            padding: 10px 20px;
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-        .boton:hover {
-            background-color: #d66616;
-        }
-        .boton-comprar {
-            background-color: #2596be; /* Updated color */
-        }
-        .imagen {
-            width: 100px;
-            height: auto;
-            margin: 20px auto;
-        }
-        .header-title {
-            font-size: 18px; /* Reduced font size */
-            font-weight: bold;
-            color: #ed7318;
-            margin-bottom: 20px;
-        }
-        .likes {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-        .likes button {
-            background-color: #ed7318;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .likes button:hover {
-            background-color: #d66616;
         }
         .modal {
-            display: none;
+            display: none; /* Oculto por defecto */
             position: fixed;
-            z-index: 1001;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 400px;
-            background-color: white;
-            border: 2px solid #ed7318;
-            border-radius: 10px;
-            padding: 20px;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); /* Fondo negro con opacidad */
             text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .modal p {
-            margin: 0;
+        .modal-content {
+            background-color: #333;
+            margin: auto;
+            padding: 30px;
+            border: 5px solid #a9ff00; /* Marco verde */
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 10px;
+            color: white; /* Color del texto */
+            font-size: 18px; /* Aumentar el tamaño de la letra */
+            position: relative;
         }
-        .modal button {
-            margin-top: 20px;
-            padding: 10px 20px;
+        .modal-content .logo {
+            width: 100px; /* Ajustar el tamaño del logo */
+            height: auto;
+            margin: 10px;
+            animation: blink 2s infinite; /* Animación de titileo */
+        }
+        .modal-content .btn {
+            background-color: #a9ff00; /* Color del marco verde */
+            color: black; /* Letras negras */
             border: none;
-            background-color: #ed7318;
-            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
             cursor: pointer;
             border-radius: 5px;
         }
-        .modal button:hover {
-            background-color: #d66616;
-        }
-        .modal img {
-            margin-bottom: 15px;
-            width: 100px; /* Adjust the size as needed */
+        @keyframes blink {
+            50% {
+                opacity: 0.5;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="overlay" id="overlay">
-        <div class="venta">
-            <button class="close-btn" onclick="window.location.href='https://www.vendeygana.net/user/'">&times;</button>
-            <img class="imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2YXoZKi6l7P0Lm952zHtLWLvLdiZxrhyjuQ&s" alt="Logo Disney">
-            <div class="header-title">COMPRA TU PANTALLA VIP O CUENTA COMPLETA CON LA MEJOR PROGRAMACIÓN</div>
-            <p>MIRA TODO LO QUE TE OFRECE DESDE EL AÑO PASADO (2024)</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/MKf8d3t_WVk" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="botones">
-                <button class="boton boton-comprar" onclick="window.location.href='https://vendeygana2.github.io/COMPRADISNEY/'">Comprar</button>
-                <button class="boton" onclick="window.location.href='https://www.vendeygana.net/user/'">Regresar a Vende y Gana</button>
-            </div>
-            <div class="likes">
-                <span id="like-count">116</span> Likes
-                <button onclick="addLike()">Me Gusta</button>
-            </div>
+    <!-- Contenedor para el iframe para ocupar toda la pantalla -->
+    <div class="iframe-container">
+        <iframe src="https://fluidforms.co/embed/form?id=679b920718ef1df993bf0346" id="formIframe"></iframe>
+    </div>
+
+    <!-- Botón "X" para abrir el popup -->
+    <button class="close-btn" id="openModalBtn" onclick="mostrarModal()" style="position: absolute; top: 10px; right: 10px; background-color: #ff5f5f; border: none; color: #fff; padding: 10px 15px; cursor: pointer; border-radius: 5px; z-index: 1000;">X</button>
+
+    <!-- Ventana emergente -->
+    <div id="miModal" class="modal">
+        <div class="modal-content">
+            <img class="logo" src="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/IVsTzWZ-200x200.webp" alt="Logo Panaxtreaming">
+            <img class="logo" src="https://flujotvla.com/wp-content/uploads/2025/01/logo_flujotv_blanco-300x181-1-e1735926597394.png" alt="Logo FlujoTV">
+            <p>Si quieres disfrutar sin complicaciones de problemas como CONTRASEÑA INCORRECTA Y LA DIFICULTAD DE INICIAR SESIÓN DE NETFLIX y otras aplicaciones, adquiere Panaxtreaming o Flujo TV.</p>
+            <p>Panaxtreaming es orgullosamente venezolana hecha por venezolanos y, como Flujo TV, te ofrecen:</p>
+            <p>TV EN VIVO con más de 800 canales: Deportes (TODOS LOS ESPN, FOXSPORT y DIRECTV SPORTS), Noticias, Infantiles, música y un catálogo de más de 9,000 películas y series estrenos de las principales plataformas como Netflix, Amazon Prime, Disney Plus, Max, Crunchyroll, Apple TV.</p>
+            <button class="btn" onclick="window.location.href='https://vendeygana2.github.io/comprapanaxtreaming/'">Comprar Panaxtreaming</button>
+            <button class="btn" onclick="window.location.href='https://vendeygana2.github.io/compraflujotv/'">Comprar Flujo TV</button>
+            <button class="btn" onclick="window.location.href='https://www.vendeygana.net/user/'">Cerrar</button>
         </div>
     </div>
 
-    <div class="modal" id="modal">
-        <img src="https://i.pinimg.com/originals/6d/04/85/6d0485006e455ef83290b2a5bcf27c56.gif" alt="Gracias">
-        <p id="modal-message"></p>
-        <button onclick="closeModal()">Cerrar</button>
-    </div>
-
     <script>
-        // Abre la ventana modal automáticamente al cargar la página
-        document.getElementById('overlay').style.display = 'flex';
-
-        let likeCount = localStorage.getItem('likeCount') ? parseInt(localStorage.getItem('likeCount')) : 116;
-
-        function updateLikeCount() {
-            document.getElementById('like-count').textContent = likeCount;
-            localStorage.setItem('likeCount', likeCount);
+        function mostrarModal() {
+            var modal = document.getElementById('miModal');
+            modal.style.display = "block";
+            document.getElementById('openModalBtn').style.display = "none";
         }
 
-        function showThanksMessage(message) {
-            const modal = document.getElementById('modal');
-            document.getElementById('modal-message').textContent = message;
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        function addLike() {
-            const lastLikeDate = localStorage.getItem('lastLikeDate');
-            const currentDate = new Date().toDateString();
-
-            if (lastLikeDate === currentDate) {
-                showThanksMessage("GRACIAS PERO SOLO PUEDES DARLE LIKE UNA VEZ AL DIA");
-            } else {
-                likeCount++;
-                updateLikeCount();
-                localStorage.setItem('lastLikeDate', currentDate);
-                showThanksMessage("GRACIAS POR TU LIKE, ES MUY IMPORTANTE PARA NOSOTROS, PUES TU ERES NUESTRA RAZÓN DE MEJORAR CADA DÍA");
+        window.onclick = function(event) {
+            var modal = document.getElementById('miModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
         }
-
-        // Sumar 17 likes automáticamente cada día
-        function addDailyLikes() {
-            likeCount += 17;
-            updateLikeCount();
-        }
-
-        // Verificar si ha pasado un día desde la última actualización
-        let lastUpdate = localStorage.getItem('lastUpdate');
-        const currentDate = new Date().toDateString();
-
-        if (lastUpdate !== currentDate) {
-            addDailyLikes();
-            localStorage.setItem('lastUpdate', currentDate);
-        }
-
-        // Inicializar el conteo de likes al cargar la página
-        updateLikeCount();
     </script>
 </body>
 </html>
