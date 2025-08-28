@@ -27,7 +27,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
             z-index: -1;
         }
 
@@ -36,12 +36,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
             padding: 20px;
             max-width: 900px;
             width: 95%;
+            overflow: hidden;
+        }
+
+        .contenedor-principal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://i.blogs.es/50c5c1/netflix-catalogo/840_560.jpeg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 0;
+            border-radius: 15px;
         }
 
         .cerrar-principal-btn {
@@ -50,18 +66,18 @@
             right: 15px;
             font-size: 24px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
             cursor: pointer;
             z-index: 10;
             background: none;
             border: none;
             padding: 0;
             line-height: 1;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         }
 
         .cerrar-principal-btn:hover {
-            color: #000;
+            color: #ccc;
         }
 
         .contenedor-botones {
@@ -69,6 +85,8 @@
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         .boton-imagen {
@@ -77,7 +95,7 @@
             padding: 15px;
             margin: 15px;
             cursor: pointer;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 180px;
@@ -90,7 +108,7 @@
 
         .boton-imagen:hover {
             transform: translateY(-5px);
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
         .boton-imagen img {
@@ -101,11 +119,21 @@
 
         .boton-negro {
             background-color: #000000;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
         }
 
         .boton-negro:hover {
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Marco blanco para botones específicos */
+        .boton-marco-blanco {
+            border: 3px solid white !important;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .boton-marco-blanco:hover {
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4), 0 10px 25px rgba(0, 0, 0, 0.8) !important;
         }
 
         .modal {
@@ -186,6 +214,7 @@
             text-align: center;
             position: relative;
             animation: fadeIn 0.3s;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
         }
 
         .fuera-horario-modal-close {
@@ -280,7 +309,8 @@
             <button class="boton-imagen" onclick="abrirModal('https://96vxnn73.forms.app/compraflujotv')">
                 <img src="https://tararear.com.ar/wp-content/uploads/2024/11/flujo-tv-smart-tv-apk.jpg" alt="Flujo TV">
             </button>
-            <button class="boton-imagen boton-apple-tv" onclick="abrirModal('https://online.forms.app/respuestasdereportesdefa/aplletv')">
+            <!-- Botón Apple TV con marco blanco -->
+            <button class="boton-imagen boton-apple-tv boton-marco-blanco" onclick="abrirModal('https://online.forms.app/respuestasdereportesdefa/aplletv')">
             </button>
             <button class="boton-imagen" onclick="abrirModal('https://online.forms.app/respuestasdereportesdefa/paramountplus')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Paramount%2B_logo.png" alt="Paramount+">
@@ -288,7 +318,8 @@
             <button class="boton-imagen" onclick="abrirModal('https://online.forms.app/respuestasdereportesdefa/plexpremium')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Plex_logo_2022.svg/2560px-Plex_logo_2022.svg.png" alt="Plex">
             </button>
-            <button class="boton-imagen boton-negro" onclick="abrirModal('https://online.forms.app/respuestasdereportesdefa/panaxtreaming')">
+            <!-- Botón panaxtreaming con marco blanco -->
+            <button class="boton-imagen boton-negro boton-marco-blanco" onclick="abrirModal('https://online.forms.app/respuestasdereportesdefa/panaxtreaming')">
                 <img src="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/IVsTzWZ-600x600.webp" alt="Nuevo Servicio">
             </button>
             <button class="boton-imagen" onclick="abrirModal('https://online.forms.app/respuestasdereportesdefa/telelatino')">
